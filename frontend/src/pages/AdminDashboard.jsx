@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom'
 import AlertDialogBox from '../Components/AlertDialog'
 import { TitleModal } from '../Components/titleModal'
 import { HeroImageModal } from '../Components/HeroImageModal'
+import { Link as RouterLink } from 'react-router-dom'
 
 const AdminDashboard = () => {
     const {isAdminAuth} = useContext(AuthContext)
@@ -157,6 +158,7 @@ const AdminDashboard = () => {
                 <Box><Button bg={'yellow'} onClick={()=>setFlag(!flag)} color={'white'} >Refresh</Button></Box>
                 <Box><TitleModal/></Box>
                 <Box><HeroImageModal/></Box>
+                <Box><RouterLink to='finalresult' ><Button color={'white'} bg={'green'}>Get Result</Button></RouterLink></Box>
             </Box>
         </Box>
 
