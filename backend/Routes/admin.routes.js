@@ -1,5 +1,4 @@
 const express = require("express")
-
 const AdminModel = require("../models/admin.model");
 const adminRouter = express.Router()
 const jwt = require("jsonwebtoken")
@@ -19,9 +18,9 @@ adminRouter.post("/signup",async(req,res)=>{
 
 // Sign in as Admin
 adminRouter.post("/signin",async (req,res)=>{
-    const {email,pass} = req.body
+    const {email,password} = req.body
     try{
-        const data = await AdminModel.find({email,pass})
+        const data = await AdminModel.find({email,password})
         if(data.length>0){
             var token = jwt.sign({ btech : "project" }, 'btech')
             res.status(200).send({"msg":"Login successfull","token":token})
