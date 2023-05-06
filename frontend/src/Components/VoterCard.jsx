@@ -13,8 +13,6 @@ import {
   } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/authContext';
-import { Base_URL } from '../Base_URL';
-import axios from 'axios';
   
   export default function VoterCard() {
 

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Base_URL } from '../Base_URL'
 import {CSVLink} from 'react-csv'
 import {
     Table,
@@ -33,7 +32,7 @@ const FinalResult = () => {
 
 
     useEffect(()=>{
-        axios.get(`${Base_URL}/candidate`)
+        axios.get(`${process.env.REACT_APP_BASE_URL}/candidate`)
         .then((res)=>{
             setData([...res.data])
         })

@@ -2,7 +2,6 @@ import { Box, Button, Image, Input, useToast } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
 import VoterCard from '../Components/VoterCard'
 import axios from 'axios'
-import { Base_URL } from '../Base_URL'
 import { AuthContext } from '../Context/authContext'
 
 import {
@@ -31,7 +30,7 @@ const VoterDashboard = () => {
   const navigate = useNavigate()
 
   useEffect(()=>{
-    axios.get(`${Base_URL}/candidate`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/candidate`)
     .then((res)=>{
       setCandidateData([...res.data])
     })
@@ -41,7 +40,7 @@ const VoterDashboard = () => {
 
 
   const getSingleVoterData = ()=>{
-    axios.get(`${Base_URL}/voter/singlevoter/${voterDetail?._id}`)
+    axios.get(`${process.env.REACT_APP_BASE_URL}/voter/singlevoter/${voterDetail?._id}`)
     .then((res)=>{
       setDetail({...res.data})
     })
@@ -68,7 +67,7 @@ const VoterDashboard = () => {
 
   const handleVote = async (id)=>{
     let voteCount;
-    await axios.get(`${Base_URL}/candidate/singlecandidate/${id}`)
+    await axios.get(`${process.env.REACT_APP_BASE_URL}/candidate/singlecandidate/${id}`)
     .then((res)=>{
       voteCount = res.data.voteCount
     })
@@ -79,7 +78,7 @@ const VoterDashboard = () => {
       voteCount : Number(voteCount)+1
     }
     
-    axios.patch(`${Base_URL}/candidate/update/${id}`,payload)
+    axios.patch(`${process.env.REACT_APP_BASE_URL}/candidate/update/${id}`,payload)
     .then((res)=>{})
     .catch((err)=>console.log(err))
 
@@ -87,7 +86,7 @@ const VoterDashboard = () => {
     let payloadvoter = {
       isVoted : true
     }
-    axios.patch(`${Base_URL}/voter/update/${voterDetail._id}`,payloadvoter)
+    axios.patch(`${process.env.REACT_APP_BASE_URL}/voter/update/${voterDetail._id}`,payloadvoter)
     .then((res)=>{})
     .catch((err)=>console.log(err))
     getSingleVoterData()
@@ -102,7 +101,7 @@ const VoterDashboard = () => {
       email : detail.email,
       message : `Your Verfication code is ${random}`
     }
-    axios.post(`${Base_URL}/send`,payload)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/send`,payload)
       .then((res)=>{})
       .catch((err)=>console.log(err))
   }

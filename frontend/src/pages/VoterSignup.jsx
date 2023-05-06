@@ -18,7 +18,6 @@ import {
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { Link as RouterLink, useNavigate } from "react-router-dom";
   import axios from 'axios'  
-import { Base_URL } from '../Base_URL';
   export default function VoterSignup() {
     const toast = useToast()
     const [showPassword, setShowPassword] = useState(false);
@@ -50,7 +49,7 @@ import { Base_URL } from '../Base_URL';
                 dob,
                 address
             }
-            axios.post(`${Base_URL}/voter/signup`,payload)
+            axios.post(`${process.env.REACT_APP_BASE_URL}/voter/signup`,payload)
             .then((res)=>{
                 toast({
                     title: 'Account created successfull.',

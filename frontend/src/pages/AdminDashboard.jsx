@@ -14,7 +14,6 @@ import {
 
 
 import axios from 'axios'
-import { Base_URL } from '../Base_URL'
 import { AuthContext } from '../Context/authContext'
 import { useNavigate } from 'react-router-dom'
 import AlertDialogBox from '../Components/AlertDialog'
@@ -42,14 +41,14 @@ const AdminDashboard = () => {
     //     }
     // }
     const getCandidatesData = ()=>{
-        axios.get(`${Base_URL}/candidate`)
+        axios.get(`${process.env.REACT_APP_BASE_URL}/candidate`)
         .then((res)=>{
             setCandidateData([...res.data])
         }).catch((err)=>console.log(err))
     }
 
     const getVoterData = ()=>{
-        axios.get(`${Base_URL}/voter`)
+        axios.get(`${process.env.REACT_APP_BASE_URL}/voter`)
         .then((res)=>{
             setVoterList([...res.data])
             
@@ -111,7 +110,7 @@ const AdminDashboard = () => {
                 image,
                 position
             }
-            axios.post(`${Base_URL}/candidate/create`,payload,{
+            axios.post(`${process.env.REACT_APP_BASE_URL}/candidate/create`,payload,{
                 headers: {
                   'Authorization': `Bearer ${JSON.parse(localStorage.getItem('admintoken'))}`
                 }

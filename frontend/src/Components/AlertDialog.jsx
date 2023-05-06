@@ -10,7 +10,6 @@ import {
     useToast
   } from '@chakra-ui/react'
 import { useRef } from 'react'
-import {Base_URL} from '../Base_URL'
 import axios from 'axios'
 
  export default function AlertDialogBox({id,forcedRender}){
@@ -22,7 +21,7 @@ import axios from 'axios'
 
     const handleDelete = ()=>{
         onClose()
-        axios.delete(`${Base_URL}/candidate/delete/${id}`,{
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/candidate/delete/${id}`,{
             headers: {
               'Authorization': `Bearer ${JSON.parse(localStorage.getItem('admintoken'))}`
             }

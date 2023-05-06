@@ -11,7 +11,6 @@ import {
 import { useContext, useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Base_URL } from "../Base_URL";
 import { AuthContext } from "../Context/authContext";
 
 
@@ -39,7 +38,7 @@ export default function HomePage(){
                 email,
                 password
             }
-            axios.post(`${Base_URL}/voter/signin`,payload)
+            axios.post(`${process.env.REACT_APP_BASE_URL}/voter/signin`,payload)
             .then((res)=>{
                 if(res.data.msg == "Login successfull"){
                     toast({
