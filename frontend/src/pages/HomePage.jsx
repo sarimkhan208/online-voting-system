@@ -70,9 +70,9 @@ export default function HomePage(){
 
 
 
-    return <Box bg={useColorModeValue('gray.50', 'gray.800')} display={'grid'} gridTemplateColumns= {{base:'50% 50%',sm:"50% 50%"}} pl={'15px'} >
+    return <Box bg={useColorModeValue('gray.50', 'gray.800')} display={{base:'block',sm:'grid'}} gridTemplateColumns= {{base:'50% 50%',sm:"50% 50%"}} pl={'15px'} >
         <Box bg={useColorModeValue('gray.50', 'gray.800')} >
-                <Heading textAlign={'center'} display={'block'} mt={'40px'} >Welcome to Online Voting</Heading>
+                <Heading fontSize={{base:'27px',sm:'35px'}} textAlign={'center'} display={'block'} mt={'40px'} >Welcome to Online Voting</Heading>
                 <Center>
                 <Image borderRadius={'7px'} my={'35px'} width={'200px'} height={'200px'} src={heroImage} alt='hero image' />
                 </Center>
@@ -88,7 +88,7 @@ export default function HomePage(){
         bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+            <Heading textAlign={'center'} fontSize={{base:'27px',sm:'35px'}}>Sign in to your account</Heading>
             </Stack>
             <Box
             rounded={'lg'}

@@ -1,7 +1,15 @@
-import { Box, Button, useToast } from "@chakra-ui/react"
+import { Box, Button, Icon, useToast } from "@chakra-ui/react"
 import { useContext } from "react"
 import { AuthContext } from "../Context/authContext"
 import { Link as RouterLink, useNavigate } from "react-router-dom"
+import {GiHamburgerMenu} from 'react-icons/gi'
+
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+  } from '@chakra-ui/react'
 
 export default function Navbar(){
 
@@ -34,9 +42,18 @@ export default function Navbar(){
     }
 
 
-    return <Box bg='teal' py={'3px'} display={'flex'} justifyContent={'space-between'} px={'50px'} >
-        <RouterLink to='/' ><Box fontWeight={'700'} textAlign={'center'} color={'white'} fontSize={'45px'}>Online Voting System</Box></RouterLink>
-        <Box display={isAdminAuth?'block':'none'} ><Button _hover={{bg:"red"}} onClick={()=>handleLogoutAdmin()} mt={'8px'} >Logout Admin</Button></Box>
-        <Box display={isVoterAuth?'block':'none'} ><Button _hover={{bg:"red"}} onClick={()=>handleLogoutVoter()} mt={'8px'} >Logout Voter</Button></Box>
+    return <Box bg='teal' py={'3px'} display={'flex'} justifyContent={'space-between'} px={{base:'10px',sm:'50px'}} >
+        <RouterLink to='/' ><Box fontWeight={'700'} textAlign={'left'} color={'white'} fontSize={{base:'25px',sm:'45px'}}>Online Voting System</Box></RouterLink>
+        <Box display={isAdminAuth || isVoterAuth?'block':'none'} mt={{base:'2px',sm:'10px'}} >
+            <Menu >
+                <MenuButton as={Button} bg={'teal'}  _hover={{bg:'teal'}}  >
+                    <Icon as={GiHamburgerMenu} bg={'teal'} color={'white'} _hover={{bg:'teal'}} />
+                </MenuButton>
+                <MenuList>
+                    <MenuItem display={isAdminAuth?'block':'none'} onClick={()=>handleLogoutAdmin()} >Logout As Admin</MenuItem>
+                    <MenuItem display={isVoterAuth?'block':'none'} onClick={()=>handleLogoutVoter()}>Logout As Voter</MenuItem>
+                </MenuList>
+            </Menu>
+        </Box>
     </Box>
 }

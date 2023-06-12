@@ -77,10 +77,11 @@ import {
   
     return (
       <Flex
+
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} width={'60%'} py={12} px={6}>
+        <Stack spacing={8} mx={'auto'} width={{base:'98%',sm:'60%'}} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={'4xl'} textAlign={'center'}>
               Sign up

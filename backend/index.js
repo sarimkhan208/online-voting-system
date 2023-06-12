@@ -46,6 +46,7 @@ app.post("/send",async (req,res)=>{
 })
 
 
+
 app.use("/admin",adminRouter)
 app.use("/candidate",candidateRouter)
 app.use("/voter",voterRouter)
@@ -60,6 +61,7 @@ app.listen(process.env.PORT,async ()=>{
     }
     console.log(`server is running at PORT : ${process.env.PORT}`)
 })
+
 
 
 

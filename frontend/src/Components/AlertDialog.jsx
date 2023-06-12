@@ -7,7 +7,8 @@ import {
     AlertDialogOverlay,
     useDisclosure,
     Button,
-    useToast
+    useToast,
+    Box
   } from '@chakra-ui/react'
 import { useRef } from 'react'
 import axios from 'axios'
@@ -41,8 +42,8 @@ import axios from 'axios'
     }
   
     return (
-      <>
-        <Button colorScheme='red' onClick={onOpen}>
+      <Box>
+        <Button justify="center" align="center"  fontSize={{base:'12px',sm:'15px'}} colorScheme='red' onClick={onOpen}>
           Remove
         </Button>
   
@@ -72,6 +73,6 @@ import axios from 'axios'
             </AlertDialogContent>
           </AlertDialogOverlay>
         </AlertDialog>
-      </>
+      </Box>
     )
   }

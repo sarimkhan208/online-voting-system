@@ -25,8 +25,10 @@ import { Base_URL } from '../Base_URL';
     const navigate = useNavigate()
     const toast = useToast()
     const {setIsAdminAuth,setPrivateRoute,setIsVotingStarted} = useContext(AuthContext)
+    const [loading,setloading] = useState(false)
 
     const handleSignIn = ()=>{
+      setloading(true)
         
         if(!email || !password){
             toast({
@@ -70,6 +72,7 @@ import { Base_URL } from '../Base_URL';
                     localStorage.setItem("admintoken",JSON.stringify(res.data.token))
                     navigate("/admindashboard")
                 }
+                setloading(false)
             })
             .catch((err)=>{
                 toast({
@@ -80,6 +83,7 @@ import { Base_URL } from '../Base_URL';
                     position: 'top',
                     isClosable: true,
                 })
+                setloading(false)
             })
         }
     }
@@ -91,7 +95,7 @@ import { Base_URL } from '../Base_URL';
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} width={'50%'} py={12} px={6}>
+        <Stack spacing={8} mx={'auto'} width={{base:'95%',sm:'40%'}} py={12} px={6}>
           <Stack align={'center'}>
             <Heading color={'teal'} fontSize={'4xl'}>Signin As Admin</Heading>
           </Stack>
@@ -103,11 +107,11 @@ import { Base_URL } from '../Base_URL';
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" onChange={(e)=>setEmail(e.target.value)} />
+                <Input placeholder='admin@gmail.com' type="email" onChange={(e)=>setEmail(e.target.value)} />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input type="password" onChange={(e)=>setPassword(e.target.value)} />
+                <Input placeholder='admin@123' type="password" onChange={(e)=>setPassword(e.target.value)} />
               </FormControl>
               <Stack spacing={10}>
                 <Stack
@@ -119,6 +123,8 @@ import { Base_URL } from '../Base_URL';
                 </Stack>
                 <Button
                   onClick={()=>handleSignIn()}
+                  isLoading={loading}
+                  loadingText='Signing in'
                   bg={'blue.400'}
                   color={'white'}
                   _hover={{

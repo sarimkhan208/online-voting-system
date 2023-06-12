@@ -111,7 +111,7 @@ const FinalResult = () => {
                 <Tr bg={'#A5D6A7'} fontWeight={'700'} >
                     <Td>Winner</Td>
                     <Td></Td>
-                    <Td>{winner}</Td>
+                    <Td>{totalVote==0?"No one":winner}</Td>
                 </Tr>
             </Tbody>
             </Table>

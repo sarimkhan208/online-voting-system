@@ -95,6 +95,7 @@ const VoterDashboard = () => {
   }
 
   const sendEmail = ()=>{
+    alert("We have send you OTP on your register email address")
     let random = Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
     setEmailCode(random)
     let payload = {
@@ -119,7 +120,7 @@ const VoterDashboard = () => {
 
 
   return (
-    <Box bg={'gray.50'} display={'grid'} gridTemplateColumns= {{base:'50% 50%',sm:"29% 68%"}} gap={'2%'} pl={'15px'}>
+    <Box bg={'gray.50'} display={'grid'} gridTemplateColumns= {{base:'100%',sm:"29% 68%"}} gap={'2%'} pl={{base:'0px',sm:'15px'}} px={{base:'5px',sm:'1px'}} >
       <Box border='1px solid #BDBDBD' borderRadius='7px' mt={'25px'} >
       <Center py={6}>
         <Box
@@ -189,7 +190,7 @@ const VoterDashboard = () => {
       </Center>
       </Box>
       {
-        !isVotingStarted?<Heading textAlign='center' color='teal' mt={'100px'} >Voting is not started yet !</Heading>:<Box border='1px solid gray' mt={'25px'} borderRadius='7px' p={'50px'} >
+        !isVotingStarted?<Heading textAlign='center' color='teal' mt={'100px'} >Voting is not started yet !</Heading>:<Box border='1px solid gray' mt={'25px'} borderRadius='7px' p={{base:'5px',sm:'50px'}} mb={'200px'}>
         {
           candidateData.length==0?<Heading textAlign='center' color='teal' mt={'100px'} >No Candidates Right Now in Election!</Heading>:candidateData?.map((el)=>(
             <Box key={el._id} my={'15px'} display={'flex'} border='1px solid #BDBDBD' borderRadius='7px' p={'10px'} justifyContent={'space-around'} >
@@ -203,7 +204,7 @@ const VoterDashboard = () => {
                 {el.position}
               </Box>
               {
-                !verify?<Text mt={'5'} fontWeight={'600'} color='red' >
+                !verify?<Text mt={'5'} pl={{base:'15px',sm:'1px'}} textAlign={'center'} fontWeight={'600'} color='red' >
                   Enter the verfication code first
                   </Text>:<Box mt={'15px'}>
                 <button disabled={detail?.isVoted==true} width={'20px'} height={'12px'} style={{background:detail?.isVoted?'gray':'green',color:'white',padding:'5px'}} onClick={()=>handleVote(el._id)}  >{detail?.isVoted?'Disable':'Vote'}</button>
